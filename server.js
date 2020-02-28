@@ -1,9 +1,13 @@
 const express = require('express')
+const connectDB = require('./config/db')
 
 const app = express()
 
-app.get('/', (req, res)=> {
-    res.json({msg: 'Welcome to the Contact Keeper API...'})
+// connect to database
+connectDB()
+
+app.get('/', (req, res) => {
+  res.json({ msg: 'Welcome to the Contact Keeper API...' })
 })
 
 app.use('/api/users', require('./routes/users'))
